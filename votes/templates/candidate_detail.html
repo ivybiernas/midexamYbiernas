@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  DETAILS
+{% endblock %}
+
+{% block body %}
+  Candidate: {{ candidate.firstname }} {{ candidate.lastname }} <br/>
+  Position: {{ candidate.position }} <br/>
+  Vote Count: {{ candidate.candidates.all.count }} <br/>
+  Platform: {{ candidate.platform }} <br/> <br/>
+
+  <a href="{{ request.META.HTTP_REFERER }}"> <button> Return </button> </a>
+  <a href="{% url 'votes:candidate_update' candidate.id %}"> <button> Update </button> </a>
+
+{% endblock %}

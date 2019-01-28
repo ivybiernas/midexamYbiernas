@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  INDEX
+{% endblock %}
+
+{% block body %}
+  <ol> <br/>
+  {% for candidate in candidate %}
+  <li>
+    <a href="{% url 'votes:candidate_detail' candidate.id %}"> Candidate: {{ candidate.firstname }} {{ candidate.lastname }} | {{ candidate.position }} | {{ candidate.candidates.all.count }} <br/> </a>
+  </li>
+  {% endfor %}
+  <br/>
+  <a href="{% url 'votes:candidate_create' %}"> <button> Add New Candidate </button> </a>
+  <a href="{% url 'votes:position_create' %}"> <button> Add New Position </button> </a>
+  </ol>
+{% endblock %}

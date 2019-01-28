@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  UPDATE
+{% endblock %}
+
+{% block body %}
+  <form action="{% url 'votes:candidate_update' form.instance.id %}" method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+      {{ field.errors }}  <br/>
+      {{ field.label }} {{ field }}
+    {% endfor %}
+    <input type="submit" value="Update">
+  </form>
+{% endblock %}
